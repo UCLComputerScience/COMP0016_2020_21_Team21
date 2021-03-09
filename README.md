@@ -2,7 +2,10 @@
 
 AR App for MRI demo
 
-Features included: 
+Core Features included: 
 - MRI scan demo
 - Voice chatbot
 - Simple game
+
+Additional Features
+- Short quiz
