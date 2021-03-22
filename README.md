@@ -7,7 +7,14 @@ AR App for MRI demo
 Unity
 There are two ways to deploy this project on Unity:
 1. Download the project zip
-2.
+2. - Navigate to the top of the page and click on `code`
+- Copy the url in `Clone with HTTPS`
+- Open your terminal and go to the location where you wish to clone the repository
+- Type `git clone [url]`
+- Press `Enter` to create your local clone
+
+Open the project in Unity and you will be able to use the repository. 
+
 
 Mobile app (APK File)
 1. Download the APK file from xxx
