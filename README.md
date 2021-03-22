@@ -38,6 +38,10 @@ For more details, please visit https://docs.github.com/en/github/creating-clonin
 # Configuring Unity
 - Change the build settings in Unity (File > Build Settings) to any platform except for web player/Web GL. The IBM Watson SDK for Unity does not support Unity Web Player.
 - If using Unity 2018.2 or later you'll need to set Scripting Runtime Version and Api Compatibility Level in Build Settings to .NET 4.x equivalent. We need to access security options to enable TLS 1.2.
+- To set up the credentials for Watson, simply enter the API key and URLs as below
+
+
+![CredentialsUnity](https://github.com/UCLComputerScience/COMP0016_2020_21_Team21/blob/dfbfd7442a864499016a7b88210688d76f1ce5dd/Watson%20Credentials.png)
 
 
 
