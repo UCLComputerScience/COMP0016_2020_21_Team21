@@ -17,7 +17,7 @@ There are two ways to deploy this project on Unity:
 
 
 Open the project in Unity and you will be able to use the repository. 
-For more details, please visit https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository to find out more. 
+For more details, please visit https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository . 
 
 
 
