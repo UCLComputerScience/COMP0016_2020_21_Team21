@@ -42,8 +42,37 @@ For more details, please visit https://docs.github.com/en/github/creating-clonin
 
 
 # Code Review
+### Overview
+#### Chatbot.cs
+This script is used for the authentication of the Watson API for the voice chatbot. The main logic behind the voice chatbot is 
+1. Convert Speech To Text
+2. Get the response from Watson Assistant
+3. Convert the reponse from text to speech 
+
+#### ChatbotManager.cs
+This script is used for the text chatbot. The code is similar to the voice chatbot with just a slight modification.
+
+#### FirebaseManager.cs
+The authentication is performed using this script. The results such as "Login Successful" and "Invalid email or password" will be shown to the users.
+
+#### QuizManager.cs
+This generation of questions and scores are performed using this script
+
+#### SequenceManager.cs
+This is used to configure the sequence of the MRI demonstration. Only admins are allowed to configure the demonstration sequence
+
+#### TableMove.cs
+The animations for the movement of the MRI machine are performed using this script. 
+
+#### TapToPlace.cs
+The setup of the MRI room, machine and Practitioner are performed when the users tap on a flat surface. 
+
+
+
+
+
 ### Chatbot.cs
-### IAM Authentication for Watson
+##### IAM Authentication for Watson
 ```
 private IEnumerator CreateService() 
     {
