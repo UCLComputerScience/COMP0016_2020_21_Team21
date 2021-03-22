@@ -2,10 +2,19 @@
 
 AR App for MRI demo
 
-Deploying the app on Unity
-- download this folder
-- drag the folder to assets
 
-Mobile app
-- Download the apk file
-- Install the app on your device
+User Manual and Deployment Guide
+Unity
+There are two ways to deploy this project on Unity:
+1. Download the project zip
+2. 
+
+Mobile app (APK File)
+1. 
+
+
+
+
+
+
+
