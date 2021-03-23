@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "759727646315",
+    "firebase_url": "https://ar-app-for-surgery-demos-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "ar-app-for-surgery-demos",
+    "storage_bucket": "ar-app-for-surgery-demos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759727646315:android:69171032291eecce68732e",
+        "android_client_info": {
+          "package_name": "com.UCL.ARAppforSurgeryDemos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759727646315-tnt94h8dco4d7ps851of2bulnnv9krim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-Z1eUocNVunrNS2SNxTC357oOwo7JWvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759727646315-tnt94h8dco4d7ps851of2bulnnv9krim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
