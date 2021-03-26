@@ -35,17 +35,21 @@ public class LoginUIManager : MonoBehaviour
     public Text saveConfirm;
     public Text currentSequence;
 
-    void Awake()
+    void Start()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
+        }
+        else
+        {
+            Destroy(this);
         }
         CleanLoginPages();
         if (FirebaseManager.auth != null)
         {
             menuPage.SetActive(true);
-            if(FirebaseManager.user.UserId == "8wpcdvNckNfGzCYyP18504SyL3K2")
+            if (FirebaseManager.user.UserId == "8wpcdvNckNfGzCYyP18504SyL3K2")
             {
                 toSettingPageButton.gameObject.SetActive(true);
             }

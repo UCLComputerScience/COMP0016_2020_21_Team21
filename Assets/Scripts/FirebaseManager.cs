@@ -32,6 +32,7 @@ public class FirebaseManager : MonoBehaviour
 
     void Awake()
     {
+        // Check that all of the necessary dependencies for Firebase are present on the system
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
             dependencyStatus = task.Result;
@@ -209,6 +210,7 @@ public class FirebaseManager : MonoBehaviour
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
         }
         // else AR MRI sequence is now updated
+        Debug.Log("UpdataDemonstrationSequence");
     }
 
     private IEnumerator GetDemonstrationSequence()
@@ -229,5 +231,6 @@ public class FirebaseManager : MonoBehaviour
         {
             SequenceManager.sequence = DBTask.Result.Value.ToString();
         }
+        Debug.Log("GetDemonstrationSequence");
     }
 }

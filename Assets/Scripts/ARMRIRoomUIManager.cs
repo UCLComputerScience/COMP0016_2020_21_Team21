@@ -29,7 +29,7 @@ public class ARMRIRoomUIManager : MonoBehaviour
     [Header("Chatbot")]
     public Chatbot chatbot;
 
-    void Awake()
+    void Start()
     {
         ToRoomPage();
     }

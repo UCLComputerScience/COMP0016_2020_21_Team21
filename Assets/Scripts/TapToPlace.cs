@@ -5,12 +5,12 @@ using UnityEngine.XR.ARSubsystems;
 
 public class TapToPlace : MonoBehaviour
 {
-    private List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
+    private List<ARRaycastHit> s_Hits;
 
-    ARRaycastManager m_RaycastManager;
-    ARReferencePointManager m_ReferencePointManager;
-    List<ARReferencePoint> m_ReferencePoint;
-    ARPlaneManager m_PlaneManager;
+    private ARRaycastManager m_RaycastManager;
+    private ARReferencePointManager m_ReferencePointManager;
+    private List<ARReferencePoint> m_ReferencePoint;
+    private ARPlaneManager m_PlaneManager;
 
     public GameObject nextButton;
 
@@ -30,6 +30,7 @@ public class TapToPlace : MonoBehaviour
         m_ReferencePointManager = GetComponent<ARReferencePointManager>();
         m_PlaneManager = GetComponent<ARPlaneManager>();
         m_ReferencePoint = new List<ARReferencePoint>();
+        s_Hits = new List<ARRaycastHit>();
         nextButton.SetActive(false);
     }
 
