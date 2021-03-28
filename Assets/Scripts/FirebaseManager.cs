@@ -5,6 +5,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class FirebaseManager : MonoBehaviour
 {
     [Header("Frebase")]
@@ -141,15 +142,15 @@ public class FirebaseManager : MonoBehaviour
                 registerWarningText.color = Color.green;
                 registerWarningText.text = "Registration successful!";
                 yield return new WaitForSeconds(1);
-                LoginUIManager.instance.RegisterBackToLogin();
+                LoginUIManager.instance.ToLogin();
             }
         }
     }
 
     private IEnumerator Login()
     {
-        LoginUIManager.instance.SetLoginButtonInteractable(false);
-        LoginUIManager.instance.SetToRegisterPageButtonInteractable(false);
+        LoginUIManager.instance.loginButton.interactable = false;
+        LoginUIManager.instance.toRegisterPageButton.interactable = false;
 
         string email = loginEmailField.text;
         string password = loginPasswordField.text;
@@ -182,8 +183,8 @@ public class FirebaseManager : MonoBehaviour
                     break;
             }
             loginWarningText.text = message;
-            LoginUIManager.instance.SetLoginButtonInteractable(true);
-            LoginUIManager.instance.SetToRegisterPageButtonInteractable(true);
+            LoginUIManager.instance.loginButton.interactable = true;
+            LoginUIManager.instance.toRegisterPageButton.interactable = true;
         }
         else
         {

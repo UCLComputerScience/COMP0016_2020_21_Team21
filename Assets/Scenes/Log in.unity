@@ -438,7 +438,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2010331366}
-        m_MethodName: LoginToRegister
+        m_MethodName: ToRegister
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2345,7 +2345,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2010331366}
-        m_MethodName: RegisterBackToLogin
+        m_MethodName: ToLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5546,7 +5546,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2010331366}
-        m_MethodName: MenuToSetting
+        m_MethodName: ToSetting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

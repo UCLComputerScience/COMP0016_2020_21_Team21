@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 
 public class ARMRIRoomUIManager : MonoBehaviour
 {
@@ -26,9 +26,6 @@ public class ARMRIRoomUIManager : MonoBehaviour
     [Header("Buttons")]
     public GameObject toMainButton;
 
-    [Header("Chatbot")]
-    public Chatbot chatbot;
-
     void Start()
     {
         ToRoomPage();
@@ -45,17 +42,12 @@ public class ARMRIRoomUIManager : MonoBehaviour
         SwitchToARCamera();
         roomPage.SetActive(true);
         toMainButton.SetActive(false);
-        if(chatbot.RespondIsActive())
-        {
-            chatbot.StartRecording();
-        }
     }
 
     public void ToQuizPage()
     {
         CleanPages();
         SwitchToNormalCamera();
-        chatbot.StopRecording();
         quizPage.SetActive(true);
         toMainButton.SetActive(true);
     }
@@ -63,7 +55,7 @@ public class ARMRIRoomUIManager : MonoBehaviour
     public void ToTextChatbotPage()
     {
         CleanPages();
-        chatbot.StopRecording();
+        SwitchToARCamera();
         textChatbotPage.SetActive(true);
         toMainButton.SetActive(true);
     }
@@ -71,7 +63,6 @@ public class ARMRIRoomUIManager : MonoBehaviour
     {
         CleanPages();
         SwitchToNormalCamera();
-        chatbot.StopRecording();
         faqPage.SetActive(true);
         toMainButton.SetActive(true);
     }

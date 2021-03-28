@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+
 public class TapToPlace : MonoBehaviour
 {
     private List<ARRaycastHit> s_Hits;
@@ -14,16 +15,6 @@ public class TapToPlace : MonoBehaviour
 
     public GameObject nextButton;
 
-    //Remove all reference points created
-    public void RemoveAllReferencePoints()
-    {
-        foreach (var referencePoint in m_ReferencePoint)
-        {
-            m_ReferencePointManager.RemoveReferencePoint(referencePoint);
-        }
-        m_ReferencePoint.Clear();
-    }
-
     void Start()
     {
         m_RaycastManager = GetComponent<ARRaycastManager>();
@@ -34,8 +25,7 @@ public class TapToPlace : MonoBehaviour
         nextButton.SetActive(false);
     }
 
-
-    bool TryGetTouchPosition(out Vector2 touchPosition)
+    private bool TryGetTouchPosition(out Vector2 touchPosition)
     {
         if (Input.touchCount > 0)
         {
@@ -45,6 +35,16 @@ public class TapToPlace : MonoBehaviour
 
         touchPosition = default;
         return false;
+    }
+
+    //Remove all reference points created
+    private void RemoveAllReferencePoints()
+    {
+        foreach (var referencePoint in m_ReferencePoint)
+        {
+            m_ReferencePointManager.RemoveReferencePoint(referencePoint);
+        }
+        m_ReferencePoint.Clear();
     }
 
     void Update()

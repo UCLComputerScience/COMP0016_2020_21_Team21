@@ -18,11 +18,9 @@
 
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using IBM.Watson.SpeechToText.V1;
 using IBM.Cloud.SDK;
-using IBM.Cloud.SDK.Authentication;
 using IBM.Cloud.SDK.Authentication.Iam;
 using IBM.Cloud.SDK.Utilities;
 using IBM.Cloud.SDK.DataTypes;
@@ -134,10 +132,12 @@ public class Chatbot : MonoBehaviour
         while (!assistant_authenticator.CanAuthenticate())
             yield return null;
 
+        // Create credential and instantiate service
         tts_service = new TextToSpeechService(tts_authenticator);
         stt_service = new SpeechToTextService(stt_authenticator);
         assistant_service = new AssistantService(assistant_version_date, assistant_authenticator);
 
+        // Wait for tokendata
         if (!string.IsNullOrEmpty(tts_url))
         {
             tts_service.SetServiceUrl(tts_url);
@@ -155,6 +155,7 @@ public class Chatbot : MonoBehaviour
 
         assistant_service.CreateSession(OnCreateSession, assistant_id);
 
+        // creating session workspace
         while (!session_created)
         {
             yield return null;
@@ -208,23 +209,24 @@ public class Chatbot : MonoBehaviour
         assistant_service.Message(OnMessage, assistant_id, session_id, input);
     }
 
+    // getting result from assistant
     private void OnMessage(DetailedResponse<MessageResponse> response, IBMError error)
     {
         if (!firstMessage) 
         {
             Debug.Log("On message");
-            // string intent = response.Result.Output.Intents[0].Intent;
             string outputText2 = response.Result.Output.Generic[0].Text;
             ResultsField.text = outputText2;
             Debug.Log(outputText2);
             CallTextToSpeech(outputText2);
         }
 
-        Debug.Log("first message");
+        Debug.Log("first message.");
 
         firstMessage = false;
     }
 
+    // getting voice input from user
     private void BuildSpokenRequest(string spokenText)
     {
         Debug.Log(spokenText);
@@ -238,8 +240,8 @@ public class Chatbot : MonoBehaviour
 
     public void CallTextToSpeech(string outputText)
     {
-        // Log.Debug("ExampleStreaming", "default");
         Debug.Log("calling tts");
+        ResultsField.text = outputText;
         byte[] synthesizeResponse = null;
         AudioClip clip = null;
         tts_service.Synthesize(
@@ -253,7 +255,6 @@ public class Chatbot : MonoBehaviour
             voice: "en-US_AllisonV3Voice",
             accept: "audio/wav"
         );
-
     }
 
     private void PlayClip(AudioClip clip)
@@ -279,14 +280,18 @@ public class Chatbot : MonoBehaviour
         }
     }
 
-    public void setStart()
+    public void setStart(bool setValue)
     {
-        respondActive = true;
+        respondActive = setValue;
     }
 
-    public bool RespondIsActive()
+    public void TryStart()
     {
-        return respondActive;
+        stop_listening = false;
+        if (respondActive)
+        {
+            StartRecording();
+        }
     }
 
     private void RecordAgain()
@@ -399,6 +404,7 @@ public class Chatbot : MonoBehaviour
         yield break;
     }
 
+    // to build spoken request
     private void OnRecognize(SpeechRecognitionEvent result)
     {
         if (result != null && result.results.Length > 0)
@@ -416,13 +422,10 @@ public class Chatbot : MonoBehaviour
                         BuildSpokenRequest(text);
                     }
                 }
-  
             }
         }
-    }
+    }  
 
-        
-        
     private void OnRecognizeSpeaker(SpeakerRecognitionEvent result)
     {
         if (result != null)
@@ -433,8 +436,4 @@ public class Chatbot : MonoBehaviour
             }
         }
     }
-
 }
-
-
-

@@ -12,16 +12,19 @@ public class GameEvents : MonoBehaviour
     [Header("MRI scan result")]
     public GameObject resultPage;
 
+    [Header("Main Page")]
+    public GameObject nextButton;
+
     public void InvokeEvent()
     {
         if(sequence == null)
         {
             ParseSequences();
         }
-        if(currentStep == sequence.Count)
+        if(currentStep + 1 == sequence.Count)
         {
             Debug.Log("No more actions");
-            return;
+            nextButton.SetActive(false);
         }
         switch(sequence[currentStep++])
         {
@@ -76,7 +79,7 @@ public class GameEvents : MonoBehaviour
                 break;
             case 11:
                 Debug.Log("11");
-                chatbot.setStart();
+                chatbot.setStart(true);
                 chatbot.CallTextToSpeech("You can try to ask me some questions.");
                 chatbot.StartRecording();
                 break;

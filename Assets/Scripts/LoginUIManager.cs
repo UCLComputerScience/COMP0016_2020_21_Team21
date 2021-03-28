@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class LoginUIManager : MonoBehaviour
 {
     public static LoginUIManager instance;
@@ -45,50 +46,44 @@ public class LoginUIManager : MonoBehaviour
         {
             Destroy(this);
         }
-        CleanLoginPages();
         if (FirebaseManager.auth != null)
         {
+            CleanPages();
             menuPage.SetActive(true);
-            if (FirebaseManager.user.UserId == "8wpcdvNckNfGzCYyP18504SyL3K2")
-            {
-                toSettingPageButton.gameObject.SetActive(true);
-            }
+            toSettingPageButton.gameObject.SetActive(FirebaseManager.user.UserId == "8wpcdvNckNfGzCYyP18504SyL3K2");
         }
         else
         {
-            loginPage.SetActive(true);
+            ToLogin();
         }
     }
 
-    public void RegisterBackToLogin()
+    public void ToLogin()
     {
-        CleanLoginPages();
+        CleanPages();
         loginPage.SetActive(true);
-        CleanRegisterPage();
+        CleanLoginFields();
     }
 
-    public void LoginToRegister()
+    public void ToRegister()
     {
-        CleanLoginPages();
+        CleanPages();
         registerPage.SetActive(true);
-        CleanLoginFields();
+        CleanRegisterPage();
     }
     public void DefaultButtonOnClick()
     {
         sequenceField.text = SequenceManager.DEFAULT;
-        saveConfirm.text = "";
+        saveConfirm.text = string.Empty;
     }
 
     public IEnumerator LoginSuccessfully(string UID)
     {
-        if(UID == "8wpcdvNckNfGzCYyP18504SyL3K2")
-        {
-            toSettingPageButton.gameObject.SetActive(true);
-        }
-        loginWarningText.text = "";
+        toSettingPageButton.gameObject.SetActive(UID == "8wpcdvNckNfGzCYyP18504SyL3K2");
+        loginWarningText.text = string.Empty;
         loginConfirmText.text = "Logging in...";
         yield return new WaitForSeconds(2);
-        CleanLoginPages();
+        CleanPages();
         menuPage.SetActive(true);
         CleanLoginFields();
         loginButton.interactable = true;
@@ -97,33 +92,26 @@ public class LoginUIManager : MonoBehaviour
 
     public void SignOut()
     {
-        CleanLoginPages();
+        ToLogin();
         toSettingPageButton.gameObject.SetActive(false);
-        loginPage.SetActive(true);
     }
 
-    public void SetLoginButtonInteractable(bool value)
+    public void ToSetting()
     {
-        loginButton.interactable = value;
-    }
-
-    public void SetToRegisterPageButtonInteractable(bool value)
-    {
-        toRegisterPageButton.interactable = value;
-    }
-
-    public void MenuToSetting()
-    {
-        CleanLoginPages();
+        CleanPages();
         settingPage.SetActive(true);
+        toSettingPageButton.gameObject.SetActive(true);
+        sequenceField.text = string.Empty;
+        saveConfirm.text = string.Empty;
         currentSequence.text = "current sequence: " + SequenceManager.sequence;
     }
 
     public void SettingToMenu()
     {
-        CleanLoginPages();
-        sequenceField.text = "";
-        saveConfirm.text = "";
+        CleanPages();
+        sequenceField.text = string.Empty;
+        saveConfirm.text = string.Empty;
+        toSettingPageButton.gameObject.SetActive(true);
         menuPage.SetActive(true);
     }
 
@@ -136,13 +124,13 @@ public class LoginUIManager : MonoBehaviour
 
     private void CleanLoginFields()
     {
-        loginEmailField.text = "";
-        loginPasswordField.text = "";
-        loginWarningText.text = "";
-        loginConfirmText.text = "";
+        loginEmailField.text = string.Empty;
+        loginPasswordField.text = string.Empty;
+        loginWarningText.text = string.Empty;
+        loginConfirmText.text = string.Empty;
     }
 
-    private void CleanLoginPages()
+    private void CleanPages()
     {
         loginPage.SetActive(false);
         menuPage.SetActive(false);
@@ -152,10 +140,10 @@ public class LoginUIManager : MonoBehaviour
 
     private void CleanRegisterPage()
     {
-        registerEmailField.text = "";
-        registerPasswordField.text = "";
-        registerPasswordVerifyField.text = "";
-        registerWarningText.text = "";
+        registerEmailField.text = string.Empty;
+        registerPasswordField.text = string.Empty;
+        registerPasswordVerifyField.text = string.Empty;
+        registerWarningText.text = string.Empty;
         registerWarningText.color = Color.red;
     }
 }

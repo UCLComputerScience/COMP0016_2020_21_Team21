@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
 
 public class QuizAnswer : MonoBehaviour
 {
@@ -42,5 +41,3 @@ public class QuizAnswer : MonoBehaviour
         GetComponent<Image>().color = startColor;
     }
 }
-
-
