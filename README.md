@@ -69,4 +69,4 @@ This is used to configure the sequence of the MRI demonstration. Only admins are
 The animations for the movement of the MRI machine are performed using this script. 
 
 #### TapToPlace.cs
-The setup of the MRI room, machine and Practitioner are performed when the users tap on a flat surface. 
+The setup of the MRI room, machine and Practitioner are performed when the users tap on a their screen and plane detection is successful. 
