@@ -22,7 +22,7 @@ For more details, please visit https://docs.github.com/en/github/creating-clonin
 
 
 ### Mobile app (APK File)
-1. Download the APK file from master > AR final APK
+1. Download the APK file from the master branch > AR MRI final.apk
 2. Install the app on your device. 
 
 
