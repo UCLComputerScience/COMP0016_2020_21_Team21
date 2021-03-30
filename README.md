@@ -1,6 +1,6 @@
 # COMP0016_2020_21_Team21
 
-AR App for MRI demo
+AR App for Patient Education and Awareness Prior to MRI Scan
 
 
 # User Manual and Deployment Guide
@@ -11,7 +11,7 @@ There are two ways to deploy this project on Unity:
 - Navigate to the top of the page and click on `code`
 - Copy the url in `Clone with HTTPS`
 - Open your terminal and go to the location where you wish to clone the repository
-- Type `git clone [url]`
+- Type `git clone https://github.com/UCLComputerScience/COMP0016_2020_21_Team21.git`
 - Press `Enter` to create your local clone
 
 
@@ -22,7 +22,7 @@ For more details, please visit https://docs.github.com/en/github/creating-clonin
 
 
 ### Mobile app (APK File)
-1. Download the APK file from xxx
+1. Download the APK file from master > AR final APK
 2. Install the app on your device. 
 
 
@@ -70,77 +70,3 @@ The animations for the movement of the MRI machine are performed using this scri
 
 #### TapToPlace.cs
 The setup of the MRI room, machine and Practitioner are performed when the users tap on a flat surface. 
-
-
-
-
-
-### Chatbot.cs
-##### IAM Authentication for Watson
-```
-private IEnumerator CreateService() 
-    {
-        // stt api
-        if(string.IsNullOrEmpty(stt_api)) {
-            throw new IBMException("Please provide API key for the Speech To Text service. ");
-        }
-
-        // tts api
-        if(string.IsNullOrEmpty(tts_api)) {
-            throw new IBMException("Please provide API key for the Text To Speech service. ");
-        }
-
-        // assistant api
-        if(string.IsNullOrEmpty(assistant_api)) {
-            throw new IBMException("Please provide API key for the Assistant service. ");
-        }
-
-        // Create credential and instantiate service
-        IamAuthenticator stt_authenticator = new IamAuthenticator(apikey: stt_api);
-        IamAuthenticator tts_authenticator = new IamAuthenticator(apikey: tts_api);
-        IamAuthenticator assistant_authenticator = new IamAuthenticator(apikey: assistant_api);
-
-        // Wait for tokendata
-        while (!stt_authenticator.CanAuthenticate())
-            yield return null;
-
-        while (!tts_authenticator.CanAuthenticate())
-            yield return null;
-
-        while (!assistant_authenticator.CanAuthenticate())
-            yield return null;
-
-        tts_service = new TextToSpeechService(tts_authenticator);
-        stt_service = new SpeechToTextService(stt_authenticator);
-        assistant_service = new AssistantService(assistant_version_date, assistant_authenticator);
-
-        if (!string.IsNullOrEmpty(tts_url))
-        {
-            tts_service.SetServiceUrl(tts_url);
-        }
-
-        if (!string.IsNullOrEmpty(stt_url))
-        {
-            stt_service.SetServiceUrl(stt_url);
-        }
-
-        if (!string.IsNullOrEmpty(assistant_url))
-        {
-            assistant_service.SetServiceUrl(assistant_url);
-        }
-
-        assistant_service.CreateSession(OnCreateSession, assistant_id);
-
-        while (!session_created)
-        {
-            yield return null;
-        }
-
-        Active = true;
-
-        WelcomeMessage();
-    }
-
-```
-
-
